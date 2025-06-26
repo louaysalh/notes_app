@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'note_model.g.dart'; // file name of generate file
 @HiveType(typeId: 0) //unique per object not duplicate 
-class NoteModel extends HiveObject{
+class NoteModel extends HiveObject{ // extend HIveObject is optional
   @HiveField(0) // unique per class can be duplicate in another class
   final String title;
   @HiveField(1)
