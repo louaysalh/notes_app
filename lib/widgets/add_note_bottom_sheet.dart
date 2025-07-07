@@ -26,9 +26,10 @@ class AddNoteBottomSheet extends StatelessWidget {
         builder: (context, state) {
           return AbsorbPointer(  // widget that prevent access any other widget in screen while it true
             absorbing: state is AddNoteLoading ? true : false ,
-            child: const Padding(
-              padding:  EdgeInsets.all(8.0),
-              child:  SingleChildScrollView(child: AddNoteForm()),
+            child: Padding(
+              padding:  EdgeInsets.only(left:16,right: 16,bottom: MediaQuery.of(context).viewInsets.bottom), //mediaQuery to access anything related to device like keyboard
+                                                                                                            // viewInsets access keyboard size on screen 
+              child: const  SingleChildScrollView(child: AddNoteForm()),
             ),
           );
         },
