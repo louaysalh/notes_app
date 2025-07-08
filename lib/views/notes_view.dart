@@ -9,25 +9,28 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            isScrollControlled: true, // make bottom sheet scroll in screen
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            context: context,
-            builder: (context) {
-              return AddNoteBottomSheet(); //when return prefer to be a custom widget because no build method
-            },
-          );
-        },
-        backgroundColor: Colors.cyanAccent,
-        shape: CircleBorder(),
-        child: Icon(Icons.add, color: Colors.black),
+    return BlocProvider(
+      create: (context) => NotesCubit(),
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              isScrollControlled: true, // make bottom sheet scroll in screen
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              context: context,
+              builder: (context) {
+                return AddNoteBottomSheet(); //when return prefer to be a custom widget because no build method
+              },
+            );
+          },
+          backgroundColor: Colors.cyanAccent,
+          shape: CircleBorder(),
+          child: Icon(Icons.add, color: Colors.black),
+        ),
+        body: const NotesViewBody(),
       ),
-      body: const NotesViewBody(),
     );
   }
 }
