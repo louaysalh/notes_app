@@ -3,7 +3,7 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key,required this.note});
+  const NoteItem({super.key, required this.note});
 
   final NoteModel note;
 
@@ -45,7 +45,9 @@ class NoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                },
                 icon: Icon(Icons.delete, color: Colors.black, size: 40),
               ),
             ),
