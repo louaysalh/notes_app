@@ -18,6 +18,7 @@ class AddNoteBottomSheet extends StatelessWidget {
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state is AddNoteFailure) {
+            print('failed');
           }
           if (state is AddNoteSuccess) {
             BlocProvider.of<NotesCubit>(context).fetchAllNotes();
@@ -35,7 +36,8 @@ class AddNoteBottomSheet extends StatelessWidget {
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ), //mediaQuery to access anything related to device like keyboard
               // viewInsets access keyboard size on screen
-              child: const SingleChildScrollView(child: AddNoteForm()),
+              child: const SingleChildScrollView(
+              child: AddNoteForm()),
             ),
           );
         },
